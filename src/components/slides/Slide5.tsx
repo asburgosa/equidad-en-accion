@@ -1,54 +1,76 @@
-import { Network } from 'lucide-react';
+import { FileSearch, Calculator, Layers, BarChart, TrendingUp } from 'lucide-react';
 
 export const Slide5 = () => {
+  const steps = [
+    {
+      icon: FileSearch,
+      title: 'Selección de indicadores',
+      number: '1',
+    },
+    {
+      icon: Calculator,
+      title: 'Cálculo de brechas',
+      number: '2',
+    },
+    {
+      icon: Layers,
+      title: 'Incorporación de la capacidad territorial',
+      number: '3',
+    },
+    {
+      icon: BarChart,
+      title: 'Normalización de resultados',
+      number: '4',
+    },
+    {
+      icon: TrendingUp,
+      title: 'Ranking departamental (2023–2024)',
+      number: '5',
+    },
+  ];
+
   return (
     <div className="relative w-full h-full flex items-center justify-center bg-background">
       <div className="relative z-10 max-w-6xl mx-auto px-12">
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-4 mb-4">
-            <Network className="w-12 h-12 text-primary" />
-            <h2 className="text-5xl font-bold text-foreground">
-              Una alianza para medir y transformar
-            </h2>
-          </div>
+          <h2 className="text-5xl font-bold text-foreground mb-3">
+            Cómo se construyó el índice
+          </h2>
+          <p className="text-xl text-muted-foreground">Metodología en 5 pasos</p>
         </div>
 
-        {/* Alliance Partners */}
-        <div className="grid md:grid-cols-3 gap-6 mb-12">
-          <div className="bg-card rounded-3xl p-8 shadow-card border border-border text-center">
-            <div className="w-20 h-20 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-              <span className="text-3xl font-bold text-primary">UR</span>
-            </div>
-            <h3 className="text-xl font-semibold text-foreground">
-              Universidad del Rosario
-            </h3>
-          </div>
+        {/* Timeline */}
+        <div className="relative">
+          {/* Connection Line */}
+          <div className="absolute top-16 left-0 right-0 h-1 bg-gradient-to-r from-primary via-secondary to-primary hidden md:block" />
 
-          <div className="bg-card rounded-3xl p-8 shadow-card border border-border text-center">
-            <div className="w-20 h-20 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-              <span className="text-3xl font-bold text-primary">CPC</span>
-            </div>
-            <h3 className="text-xl font-semibold text-foreground">
-              Consejo Privado de Competitividad
-            </h3>
-          </div>
+          {/* Steps */}
+          <div className="grid md:grid-cols-5 gap-6">
+            {steps.map((step, index) => {
+              const Icon = step.icon;
+              return (
+                <div key={index} className="relative">
+                  <div className="bg-card rounded-3xl p-6 shadow-card border border-border hover:shadow-soft transition-shadow text-center">
+                    {/* Number Badge */}
+                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold text-lg shadow-soft">
+                      {step.number}
+                    </div>
 
-          <div className="bg-card rounded-3xl p-8 shadow-card border border-border text-center">
-            <div className="w-20 h-20 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-              <span className="text-3xl font-bold text-primary">D</span>
-            </div>
-            <h3 className="text-xl font-semibold text-foreground">Davivienda</h3>
-          </div>
-        </div>
+                    {/* Icon */}
+                    <div className="w-16 h-16 bg-secondary/10 rounded-2xl flex items-center justify-center mx-auto mb-4 mt-2">
+                      <Icon className="w-8 h-8 text-secondary" />
+                    </div>
 
-        {/* Description */}
-        <div className="bg-gradient-accent rounded-3xl p-10 border border-secondary/30">
-          <p className="text-2xl text-foreground leading-relaxed text-center">
-            Por primera vez, Colombia cuenta con una{' '}
-            <span className="font-bold text-secondary">medición subregional</span> que analiza{' '}
-            <span className="font-semibold">6 pilares, 17 subpilares y 74 indicadores.</span>
-          </p>
+                    {/* Title */}
+                    <h3 className="text-base font-semibold text-foreground leading-tight">
+                      {step.title}
+                    </h3>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>
